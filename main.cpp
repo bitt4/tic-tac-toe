@@ -39,7 +39,7 @@ int main(int argc, char *argv[]){
         return EXIT_FAILURE;
     }
 
-    Tictactoe tictactoe(renderer);
+    Tictactoe tictactoe(renderer, 600, 600);
     tictactoe.renderInit();
 
     SDL_Event e;
@@ -50,6 +50,9 @@ int main(int argc, char *argv[]){
             switch(e.type){
             case SDL_QUIT:
                 quit = true;
+                break;
+            case SDL_MOUSEBUTTONDOWN:
+                tictactoe.click_on_cell(e.button.x / 200, e.button.y / 200);
                 break;
             default: {}
             }
