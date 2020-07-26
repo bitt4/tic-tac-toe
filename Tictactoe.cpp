@@ -15,6 +15,10 @@ int Tictactoe::getSize(){
     return this->size;
 }
 
+int Tictactoe::get_cell_width(){
+    return this->cell_width;
+}
+
 void Tictactoe::renderInit(){
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
     SDL_RenderClear(renderer);
