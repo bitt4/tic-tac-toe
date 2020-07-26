@@ -52,7 +52,7 @@ int main(int argc, char *argv[]){
                 quit = true;
                 break;
             case SDL_MOUSEBUTTONDOWN:
-                tictactoe.click_on_cell(e.button.x / 200, e.button.y / 200);
+                tictactoe.click_on_cell(e.button.x / tictactoe.get_cell_width(), e.button.y / tictactoe.get_cell_width());
                 break;
             default: {}
             }
