@@ -4,8 +4,7 @@
 class Tictactoe{
 private:
     SDL_Renderer *renderer;
-    int boardWidth;
-    int boardHeight;
+    int boardWidth, boardHeight;
     int size;
     int cell_width;
     SDL_Color crossColor, circleColor;
@@ -17,4 +16,5 @@ public:
     void renderInit();
     void click_on_cell(int, int);
     int getSize();
+    int get_cell_width();
 };
