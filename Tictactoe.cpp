@@ -5,10 +5,14 @@ Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h)
      crossColor({.r = 0, .g = 0, .b = 255}),
      circleColor({.r = 255, .g = 0, .b = 0})
 {
-        this->renderer = renderer;
-        this->boardWidth = w;
-        this->boardHeight = h;
-        this->cell_width = this->boardWidth / this->size;
+    this->renderer = renderer;
+    this->boardWidth = w;
+    this->boardHeight = h;
+    this->cell_width = this->boardWidth / this->size;
+
+    // TODO: Resize window based on size of cell and
+    //       number of cells instead of changing size
+    //       of cell, ( main.cpp )
 }
 
 int Tictactoe::getSize(){
@@ -37,6 +41,9 @@ void Tictactoe::renderInit(){
                            this->cell_width * i + i,
                            this->cell_width * this->size + this->size,
                            this->cell_width * i + i);
+
+        // The "+ i" in "this->cell_width * i + i", etc., is used to ensure
+        // that each cell is the same size, besause each line takes 1 pixel
     }
 
     SDL_RenderPresent(renderer);
