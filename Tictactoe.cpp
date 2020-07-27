@@ -24,17 +24,27 @@ void Tictactoe::renderInit(){
     SDL_RenderClear(renderer);
 
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderDrawLine(renderer, 201, 0, 201, 602);
-    SDL_RenderDrawLine(renderer, 402, 0, 402, 602);
-    SDL_RenderDrawLine(renderer, 0, 201, 602, 201);
-    SDL_RenderDrawLine(renderer, 0, 402, 602, 402);
+
+    for(int i = 1; i < this->size; i++){
+        SDL_RenderDrawLine(renderer,
+                           this->cell_width * i + i,
+                           0,
+                           this->cell_width * i + i,
+                           this->cell_width * this->size + this->size);
+
+        SDL_RenderDrawLine(renderer,
+                           0,
+                           this->cell_width * i + i,
+                           this->cell_width * this->size + this->size,
+                           this->cell_width * i + i);
+    }
 
     SDL_RenderPresent(renderer);
 }
 
 void Tictactoe::click_on_cell(int x, int y){
-    drawCross(x * cell_width + cell_width * 0.5,
-              y * cell_width + cell_width * 0.5);
+    drawCross(x * cell_width + cell_width * 0.5 + x,
+              y * cell_width + cell_width * 0.5 + y);
 
     /*
     drawCircle(x * cell_width + cell_width * 0.5,
@@ -66,8 +76,6 @@ void Tictactoe::drawCross(int x, int y){
                   crossColor.g,
                   crossColor.b,
                   255);
-
-    SDL_RenderPresent(renderer);
 }
 
 void Tictactoe::drawCircle(int x, int y){
