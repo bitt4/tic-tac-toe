@@ -3,7 +3,8 @@
 Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h)
     :size(3),
      crossColor({.r = 0, .g = 0, .b = 255}),
-     circleColor({.r = 255, .g = 0, .b = 0})
+     circleColor({.r = 255, .g = 0, .b = 0}),
+     currentPlayer(Player::player_x)
 {
     this->renderer = renderer;
     this->boardWidth = w;
@@ -44,21 +45,37 @@ void Tictactoe::renderInit(){
 
         // The "+ i" in "this->cell_width * i + i", etc., is used to ensure
         // that each cell is the same size, besause each line takes 1 pixel
+        // also used in Tictactoe::click_on_cell
     }
 
     SDL_RenderPresent(renderer);
 }
 
-void Tictactoe::click_on_cell(int x, int y){
-    drawCross(x * cell_width + cell_width * 0.5 + x,
-              y * cell_width + cell_width * 0.5 + y);
+void Tictactoe::switchPlayer(){
+    if(this->currentPlayer == Player::player_x){
+        this->currentPlayer = Player::player_o;
+    }
+    else {
+        this->currentPlayer = Player::player_x;
+    }
+}
 
-    /*
-    drawCircle(x * cell_width + cell_width * 0.5,
-               y * cell_width + cell_width * 0.5);
-    */
+void Tictactoe::click_on_cell(int x, int y){
+
+    // TODO: Check if the cell is empty before rendering
+
+    if(this->currentPlayer == Player::player_x){
+        drawCross(x * cell_width + cell_width * 0.5 + x,
+                  y * cell_width + cell_width * 0.5 + y);
+    }
+    else {
+        drawCircle(x * cell_width + cell_width * 0.5,
+                   y * cell_width + cell_width * 0.5);
+    }
 
     SDL_RenderPresent(renderer);
+
+    switchPlayer();
 }
 
 void Tictactoe::drawCross(int x, int y){
