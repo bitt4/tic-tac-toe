@@ -40,6 +40,7 @@ int main(int argc, char *argv[]){
     }
 
     Tictactoe tictactoe(renderer, 600, 600);
+
     SDL_SetWindowSize(window,
                       tictactoe.getSize() * tictactoe.get_cell_width() + tictactoe.getSize(),
                       tictactoe.getSize() * tictactoe.get_cell_width() + tictactoe.getSize());
