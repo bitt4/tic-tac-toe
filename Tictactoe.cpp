@@ -52,12 +52,19 @@ void Tictactoe::renderInit(){
 }
 
 void Tictactoe::switchPlayer(){
-    if(this->currentPlayer == Player::player_x){
-        this->currentPlayer = Player::player_o;
-    }
-    else {
-        this->currentPlayer = Player::player_x;
-    }
+
+    this->currentPlayer = (this->currentPlayer == Player::player_x
+                           ? Player::player_o
+                           : Player::player_x);
+
+    // The code block above is equivalent to the code block below
+
+    // if(this->currentPlayer == Player::player_x){
+    //     this->currentPlayer = Player::player_o;
+    // }
+    // else {
+    //     this->currentPlayer = Player::player_x;
+    // }
 }
 
 void Tictactoe::click_on_cell(int x, int y){
