@@ -70,20 +70,20 @@ void Tictactoe::switchPlayer(){
 
 void Tictactoe::click_on_cell(int x, int y){
 
-    // TODO: Check if the cell is empty before rendering
-
-    if(this->currentPlayer == Player::player_x){
-        drawCross(x * cell_width + cell_width * 0.5 + x,
-                  y * cell_width + cell_width * 0.5 + y);
+    if(this->board[y * size + x] == Player::no_player){
+        if(this->currentPlayer == Player::player_x){
+            drawCross(x * cell_width + cell_width * 0.5 + x,
+                      y * cell_width + cell_width * 0.5 + y);
+            this->board[y * size + x] = Player::player_x;
+        }
+        else {
+            drawCircle(x * cell_width + cell_width * 0.5 + x,
+                       y * cell_width + cell_width * 0.5 + y);
+            this->board[y * size + x] = Player::player_o;
+        }
+        switchPlayer();
+        SDL_RenderPresent(renderer);
     }
-    else {
-        drawCircle(x * cell_width + cell_width * 0.5 + x,
-                   y * cell_width + cell_width * 0.5 + y);
-    }
-
-    SDL_RenderPresent(renderer);
-
-    switchPlayer();
 }
 
 void Tictactoe::drawCross(int x, int y){
