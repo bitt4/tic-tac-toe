@@ -10,6 +10,7 @@ Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h)
     this->boardWidth = w;
     this->boardHeight = h;
     this->cell_width = this->boardWidth / this->size;
+    this->board = (Player*) calloc( this->size * this->size, sizeof(Player) );
 
     // TODO: Resize window based on size of cell and
     //       number of cells instead of changing size
@@ -76,8 +77,8 @@ void Tictactoe::click_on_cell(int x, int y){
                   y * cell_width + cell_width * 0.5 + y);
     }
     else {
-        drawCircle(x * cell_width + cell_width * 0.5,
-                   y * cell_width + cell_width * 0.5);
+        drawCircle(x * cell_width + cell_width * 0.5 + x,
+                   y * cell_width + cell_width * 0.5 + y);
     }
 
     SDL_RenderPresent(renderer);
