@@ -4,13 +4,13 @@ Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h)
     :size(3),
      crossColor({.r = 0, .g = 0, .b = 255}),
      circleColor({.r = 255, .g = 0, .b = 0}),
-     currentPlayer(Player::player_x)
+     currentPlayer(Cell::player_x)
 {
     this->renderer = renderer;
     this->boardWidth = w;
     this->boardHeight = h;
     this->cell_width = this->boardWidth / this->size;
-    this->board = (Player*) calloc( this->size * this->size, sizeof(Player) );
+    this->board = (Cell*) calloc( this->size * this->size, sizeof(Cell) );
 
     // TODO: Resize window based on size of cell and
     //       number of cells instead of changing size
@@ -54,32 +54,32 @@ void Tictactoe::renderInit(){
 
 void Tictactoe::switchPlayer(){
 
-    this->currentPlayer = (this->currentPlayer == Player::player_x
-                           ? Player::player_o
-                           : Player::player_x);
+    this->currentPlayer = (this->currentPlayer == Cell::player_x
+                           ? Cell::player_o
+                           : Cell::player_x);
 
     // The code block above is equivalent to the code block below
 
-    // if(this->currentPlayer == Player::player_x){
-    //     this->currentPlayer = Player::player_o;
+    // if(this->currentPlayer == Cell::player_x){
+    //     this->currentPlayer = Cell::player_o;
     // }
     // else {
-    //     this->currentPlayer = Player::player_x;
+    //     this->currentPlayer = Cell::player_x;
     // }
 }
 
 void Tictactoe::click_on_cell(int x, int y){
 
-    if(this->board[y * size + x] == Player::no_player){
-        if(this->currentPlayer == Player::player_x){
+    if(this->board[y * size + x] == Cell::no_player){
+        if(this->currentPlayer == Cell::player_x){
             drawCross(x * cell_width + cell_width * 0.5 + x,
                       y * cell_width + cell_width * 0.5 + y);
-            this->board[y * size + x] = Player::player_x;
+            this->board[y * size + x] = Cell::player_x;
         }
         else {
             drawCircle(x * cell_width + cell_width * 0.5 + x,
                        y * cell_width + cell_width * 0.5 + y);
-            this->board[y * size + x] = Player::player_o;
+            this->board[y * size + x] = Cell::player_o;
         }
         switchPlayer();
         SDL_RenderPresent(renderer);
