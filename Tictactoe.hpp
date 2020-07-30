@@ -2,7 +2,7 @@
 #include <SDL2/SDL2_gfxPrimitives.h>
 #include <cstdlib>
 
-enum class Player {
+enum class Cell {    // Owners of a cell
     no_player,       // Marks an empty cell on board
     player_x,
     player_o
@@ -15,8 +15,8 @@ private:
     int size;
     int cell_width;
     SDL_Color crossColor, circleColor;
-    Player currentPlayer;
-    Player *board;
+    Cell currentPlayer;
+    Cell *board;
 
     void drawCross(int, int);
     void drawCircle(int, int);
