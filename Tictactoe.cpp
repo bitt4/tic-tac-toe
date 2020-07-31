@@ -4,7 +4,8 @@ Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h)
     :size(3),
      crossColor({.r = 0, .g = 0, .b = 255}),
      circleColor({.r = 255, .g = 0, .b = 0}),
-     currentPlayer(Cell::player_x)
+     currentPlayer(Cell::player_x),
+     runningState(true)
 {
     this->renderer = renderer;
     this->boardWidth = w;
@@ -23,6 +24,14 @@ int Tictactoe::getSize(){
 
 int Tictactoe::get_cell_width(){
     return this->cell_width;
+}
+
+bool Tictactoe::getRunningState(){
+    return this->runningState;
+}
+
+void Tictactoe::end(){
+    this->runningState = false;
 }
 
 void Tictactoe::renderInit(){
