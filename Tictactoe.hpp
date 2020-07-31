@@ -24,6 +24,7 @@ private:
     void switchPlayer();
     bool checkRow(int, Cell);
     bool checkColumn(int, Cell);
+    bool checkDiagonals(Cell);
 public:
     Tictactoe(SDL_Renderer*, int, int);
     void renderInit();
