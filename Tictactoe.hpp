@@ -17,6 +17,7 @@ private:
     SDL_Color crossColor, circleColor;
     Cell currentPlayer;
     Cell *board;
+    bool runningState;
 
     void drawCross(int, int);
     void drawCircle(int, int);
@@ -29,4 +30,6 @@ public:
     void click_on_cell(int, int);
     int getSize();
     int get_cell_width();
+    bool getRunningState();
+    void end();
 };
