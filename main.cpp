@@ -49,12 +49,11 @@ int main(int argc, char *argv[]){
 
     SDL_Event e;
 
-    bool quit = false;
-    while(!quit){
+    while(tictactoe.getRunningState()){
         while(SDL_PollEvent(&e)){
             switch(e.type){
             case SDL_QUIT:
-                quit = true;
+                tictactoe.end();
                 break;
             case SDL_MOUSEBUTTONDOWN:
                 tictactoe.click_on_cell(e.button.x / tictactoe.get_cell_width(), e.button.y / tictactoe.get_cell_width());
