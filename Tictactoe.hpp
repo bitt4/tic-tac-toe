@@ -21,6 +21,7 @@ private:
     void drawCross(int, int);
     void drawCircle(int, int);
     void switchPlayer();
+    bool checkRow(int, Cell);
 public:
     Tictactoe(SDL_Renderer*, int, int);
     void renderInit();
