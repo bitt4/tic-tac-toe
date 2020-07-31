@@ -78,6 +78,16 @@ bool Tictactoe::checkRow(int row, Cell player){
     return rowCount == this->size;
 }
 
+bool Tictactoe::checkColumn(int column, Cell player){
+    int columnCount = 0;
+    for(int i = 0; i < this->size; i++){
+        if(this->board[i * this->size + column] == player){
+            columnCount++;
+        }
+    }
+    return columnCount == this->size;
+}
+
 void Tictactoe::click_on_cell(int x, int y){
 
     if(this->board[y * size + x] == Cell::no_player){
