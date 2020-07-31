@@ -97,6 +97,31 @@ bool Tictactoe::checkColumn(int column, Cell player){
     return columnCount == this->size;
 }
 
+bool Tictactoe::checkDiagonals(Cell player){
+    int diagonalCount = 0;
+
+    // First diagonal
+    for(int i = 0; i < this->size; i++){
+        if(this->board[ i * this->size + i ] == player){
+            diagonalCount++;
+        }
+    }
+
+    if(diagonalCount == this->size)
+        return true;
+
+    diagonalCount = 0;
+
+    // Second diagonal
+    for(int i = 0; i < this->size; i++){
+        if(this->board[ (this->size - i - 1) * this->size + i ] == player){
+            diagonalCount++;
+        }
+    }
+
+    return diagonalCount == this->size;
+}
+
 void Tictactoe::click_on_cell(int x, int y){
 
     if(this->board[y * size + x] == Cell::no_player){
