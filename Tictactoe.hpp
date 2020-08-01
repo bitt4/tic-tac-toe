@@ -26,6 +26,7 @@ private:
     bool checkColumn(int, Cell);
     bool checkDiagonals(Cell);
     bool checkPlayerWon(Cell);
+    bool checkDraw();
 public:
     Tictactoe(SDL_Renderer*, int, int);
     void renderInit();
