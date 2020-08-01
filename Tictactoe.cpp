@@ -131,6 +131,15 @@ bool Tictactoe::checkPlayerWon(Cell player){
     return checkDiagonals(player);
 }
 
+bool Tictactoe::checkDraw(){
+    int emptyCells = 0;
+    for(int i = 0; i < this->size * this->size; i++){
+        if(this->board[i] == Cell::no_player)
+            emptyCells++;
+    }
+    return emptyCells == 0;
+}
+
 void Tictactoe::click_on_cell(int x, int y){
 
     if(this->board[y * size + x] == Cell::no_player){
@@ -148,6 +157,8 @@ void Tictactoe::click_on_cell(int x, int y){
         // Check if current player won
 
         if(checkPlayerWon(this->currentPlayer))
+            end();
+        else if(checkDraw())
             end();
 
         switchPlayer();
