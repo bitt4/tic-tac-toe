@@ -122,6 +122,15 @@ bool Tictactoe::checkDiagonals(Cell player){
     return diagonalCount == this->size;
 }
 
+bool Tictactoe::checkPlayerWon(Cell player){
+    for(int i = 0; i < this->size; i++){
+        if(checkRow(i, player) || checkColumn(i, player))
+            return true;
+    }
+
+    return checkDiagonals(player);
+}
+
 void Tictactoe::click_on_cell(int x, int y){
 
     if(this->board[y * size + x] == Cell::no_player){
@@ -135,6 +144,12 @@ void Tictactoe::click_on_cell(int x, int y){
                        y * cell_width + cell_width * 0.5 + y);
             this->board[y * size + x] = Cell::player_o;
         }
+
+        // Check if current player won
+
+        if(checkPlayerWon(this->currentPlayer))
+            end();
+
         switchPlayer();
         SDL_RenderPresent(renderer);
     }
