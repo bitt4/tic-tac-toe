@@ -35,5 +35,5 @@ public:
     int getSize();
     int get_cell_width();
     bool getRunningState();
-    void end();
+    void quit();
 };
