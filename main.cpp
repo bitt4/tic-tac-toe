@@ -53,7 +53,7 @@ int main(int argc, char *argv[]){
         while(SDL_PollEvent(&e)){
             switch(e.type){
             case SDL_QUIT:
-                tictactoe.end();
+                tictactoe.quit();
                 break;
             case SDL_MOUSEBUTTONDOWN:
                 tictactoe.click_on_cell(e.button.x / tictactoe.get_cell_width(), e.button.y / tictactoe.get_cell_width());
