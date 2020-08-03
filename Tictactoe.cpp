@@ -180,9 +180,9 @@ void Tictactoe::drawCross(int x, int y){
                   x + cell_width * 0.3,
                   y - cell_width * 0.3,
                   10,
-                  0,
-                  0,
-                  255,
+                  crossColor.r,
+                  crossColor.g,
+                  crossColor.b,
                   255);
 
     thickLineRGBA(renderer,
