@@ -173,6 +173,8 @@ void Tictactoe::click_on_cell(int x, int y){
     }
 }
 
+// TODO: void renderWinState(Cell player) function
+
 void Tictactoe::drawCross(int x, int y){
     thickLineRGBA(renderer,
                   x - cell_width * 0.3,
