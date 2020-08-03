@@ -30,7 +30,7 @@ bool Tictactoe::getRunningState(){
     return this->runningState;
 }
 
-void Tictactoe::end(){
+void Tictactoe::quit(){
     this->runningState = false;
 }
 
@@ -164,9 +164,9 @@ void Tictactoe::click_on_cell(int x, int y){
         // Check if current player won
 
         if(checkPlayerWon(this->currentPlayer))
-            end();
+            quit();
         else if(checkDraw())
-            end();
+            quit();
 
         switchPlayer();
         SDL_RenderPresent(renderer);
