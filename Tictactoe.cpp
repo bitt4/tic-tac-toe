@@ -77,6 +77,13 @@ void Tictactoe::switchPlayer(){
     // }
 }
 
+void Tictactoe::restart(){
+    renderInit();
+    for(int i = 0; i < this->size * this->size; i++){
+        this->board[i] = Cell::no_player;
+    }
+}
+
 bool Tictactoe::checkRow(int row, Cell player){
     int rowCount = 0;
     for(int i = 0; i < this->size; i++){
