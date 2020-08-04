@@ -19,6 +19,8 @@ private:
     Cell *board;
     bool runningState;
 
+    void drawCross(int, int, SDL_Color);
+    void drawCircle(int, int, SDL_Color);
     void drawCross(int, int);
     void drawCircle(int, int);
     void switchPlayer();
