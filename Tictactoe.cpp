@@ -175,10 +175,6 @@ void Tictactoe::click_on_cell(int x, int y){
 
 // TODO: void renderWinState(Cell player) function
 
-// TODO: Add color parameter to drawCross() and drawCircle() functions
-//       and make Tictactoe class atributes crossColor and circleColor
-//       their default values
-
 void Tictactoe::drawCross(int x, int y, SDL_Color color){
     thickLineRGBA(renderer,
                   x - cell_width * 0.3,
