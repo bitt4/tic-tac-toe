@@ -179,16 +179,16 @@ void Tictactoe::click_on_cell(int x, int y){
 //       and make Tictactoe class atributes crossColor and circleColor
 //       their default values
 
-void Tictactoe::drawCross(int x, int y){
+void Tictactoe::drawCross(int x, int y, SDL_Color color){
     thickLineRGBA(renderer,
                   x - cell_width * 0.3,
                   y + cell_width * 0.3,
                   x + cell_width * 0.3,
                   y - cell_width * 0.3,
                   10,
-                  crossColor.r,
-                  crossColor.g,
-                  crossColor.b,
+                  color.r,
+                  color.g,
+                  color.b,
                   255);
 
     thickLineRGBA(renderer,
@@ -197,20 +197,20 @@ void Tictactoe::drawCross(int x, int y){
                   x + cell_width * 0.3,
                   y + cell_width * 0.3,
                   10,
-                  crossColor.r,
-                  crossColor.g,
-                  crossColor.b,
+                  color.r,
+                  color.g,
+                  color.b,
                   255);
 }
 
-void Tictactoe::drawCircle(int x, int y){
+void Tictactoe::drawCircle(int x, int y, SDL_Color color){
     filledCircleRGBA(renderer,
                      x,
                      y,
                      cell_width * 0.4,
-                     circleColor.r,
-                     circleColor.g,
-                     circleColor.b,
+                     color.r,
+                     color.g,
+                     color.b,
                      255);
 
     filledCircleRGBA(renderer,
@@ -221,4 +221,12 @@ void Tictactoe::drawCircle(int x, int y){
                      0,
                      0,
                      255);
+}
+
+void Tictactoe::drawCross(int x, int y){
+    drawCross(x, y, this->crossColor);
+}
+
+void Tictactoe::drawCircle(int x, int y){
+    drawCircle(x, y, this->circleColor);
 }
