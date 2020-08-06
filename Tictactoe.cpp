@@ -4,6 +4,7 @@ Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h)
     :size(3),
      crossColor({.r = 0, .g = 0, .b = 255}),
      circleColor({.r = 255, .g = 0, .b = 0}),
+     drawColor({.r = 24, .g = 24, .b = 24}),
      currentPlayer(Cell::player_x),
      runningState(true)
 {
@@ -57,8 +58,6 @@ void Tictactoe::renderInit(){
         // that each cell is the same size, besause each line takes 1 pixel
         // also used in Tictactoe::click_on_cell
     }
-
-    SDL_RenderPresent(renderer);
 }
 
 void Tictactoe::switchPlayer(){
@@ -163,10 +162,14 @@ void Tictactoe::click_on_cell(int x, int y){
 
         // Check if current player won
 
-        if(checkPlayerWon(this->currentPlayer))
+        if(checkPlayerWon(this->currentPlayer)) {
+            renderWinState(this->currentPlayer);
             quit();
-        else if(checkDraw())
-            quit();
+        }
+
+        else if(checkDraw()){
+            renderWinState(Cell::no_player);
+        }
 
         switchPlayer();
         SDL_RenderPresent(renderer);
@@ -174,6 +177,31 @@ void Tictactoe::click_on_cell(int x, int y){
 }
 
 // TODO: void renderWinState(Cell player) function
+
+void Tictactoe::renderWinState(Cell player){
+    renderInit();
+
+    SDL_Color winColor = (player == Cell::player_x ? this->crossColor : (
+                             player == Cell::player_o ? this->circleColor :
+                                 this->drawColor
+                             )
+                         );
+
+    for(int y = 0; y < this->size; y++){
+        for(int x = 0; x < this->size; x++){
+            if(this->board[y * this->size + x] == Cell::player_x){
+                drawCross(x * cell_width + cell_width * 0.5 + x,
+                          y * cell_width + cell_width * 0.5 + y,
+                          winColor);
+            }
+            else if(this->board[y * this->size + x] == Cell::player_o){
+                drawCircle(x * cell_width + cell_width * 0.5 + x,
+                           y * cell_width + cell_width * 0.5 + y,
+                           winColor);
+            }
+        }
+    }
+}
 
 void Tictactoe::drawCross(int x, int y, SDL_Color color){
     thickLineRGBA(renderer,
