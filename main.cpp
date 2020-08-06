@@ -46,6 +46,7 @@ int main(int argc, char *argv[]){
                       tictactoe.getSize() * tictactoe.get_cell_width() + tictactoe.getSize());
 
     tictactoe.renderInit();
+    SDL_RenderPresent(renderer);
 
     SDL_Event e;
 
