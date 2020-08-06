@@ -14,7 +14,7 @@ private:
     int boardWidth, boardHeight;
     int size;
     int cell_width;
-    SDL_Color crossColor, circleColor;
+    SDL_Color crossColor, circleColor, drawColor;
     Cell currentPlayer;
     Cell *board;
     bool runningState;
@@ -30,6 +30,7 @@ private:
     bool checkPlayerWon(Cell);
     bool checkDraw();
     void restart();
+    void renderWinState(Cell);
 public:
     Tictactoe(SDL_Renderer*, int, int);
     void renderInit();
