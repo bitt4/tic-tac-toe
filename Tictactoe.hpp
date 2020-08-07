@@ -17,7 +17,7 @@ private:
     SDL_Color crossColor, circleColor, drawColor;
     Cell currentPlayer;
     Cell *board;
-    bool runningState;
+    bool runningState, gameEnded;
 
     void drawCross(int, int, SDL_Color);
     void drawCircle(int, int, SDL_Color);
