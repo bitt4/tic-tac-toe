@@ -6,7 +6,8 @@ Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h)
      circleColor({.r = 255, .g = 0, .b = 0}),
      drawColor({.r = 24, .g = 24, .b = 24}),
      currentPlayer(Cell::player_x),
-     runningState(true)
+     runningState(true),
+     gameEnded(false)
 {
     this->renderer = renderer;
     this->boardWidth = w;
@@ -81,6 +82,9 @@ void Tictactoe::restart(){
     for(int i = 0; i < this->size * this->size; i++){
         this->board[i] = Cell::no_player;
     }
+    this->gameEnded = false;
+    this->currentPlayer = Cell::player_x;
+    SDL_RenderPresent(renderer);
 }
 
 bool Tictactoe::checkRow(int row, Cell player){
@@ -148,7 +152,11 @@ bool Tictactoe::checkDraw(){
 
 void Tictactoe::click_on_cell(int x, int y){
 
-    if(this->board[y * size + x] == Cell::no_player){
+    if(gameEnded){
+        restart();
+    }
+
+    else if(this->board[y * size + x] == Cell::no_player){
         if(this->currentPlayer == Cell::player_x){
             drawCross(x, y);
             this->board[y * size + x] = Cell::player_x;
@@ -162,11 +170,12 @@ void Tictactoe::click_on_cell(int x, int y){
 
         if(checkPlayerWon(this->currentPlayer)) {
             renderWinState(this->currentPlayer);
-            quit();
+            this->gameEnded = true;
         }
 
         else if(checkDraw()){
             renderWinState(Cell::no_player);
+            this->gameEnded = true;
         }
 
         switchPlayer();
