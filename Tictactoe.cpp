@@ -150,13 +150,11 @@ void Tictactoe::click_on_cell(int x, int y){
 
     if(this->board[y * size + x] == Cell::no_player){
         if(this->currentPlayer == Cell::player_x){
-            drawCross(x * cell_width + cell_width * 0.5 + x,
-                      y * cell_width + cell_width * 0.5 + y);
+            drawCross(x, y);
             this->board[y * size + x] = Cell::player_x;
         }
         else {
-            drawCircle(x * cell_width + cell_width * 0.5 + x,
-                       y * cell_width + cell_width * 0.5 + y);
+            drawCircle(x, y);
             this->board[y * size + x] = Cell::player_o;
         }
 
@@ -190,13 +188,11 @@ void Tictactoe::renderWinState(Cell player){
     for(int y = 0; y < this->size; y++){
         for(int x = 0; x < this->size; x++){
             if(this->board[y * this->size + x] == Cell::player_x){
-                drawCross(x * cell_width + cell_width * 0.5 + x,
-                          y * cell_width + cell_width * 0.5 + y,
+                drawCross(x, y,
                           winColor);
             }
             else if(this->board[y * this->size + x] == Cell::player_o){
-                drawCircle(x * cell_width + cell_width * 0.5 + x,
-                           y * cell_width + cell_width * 0.5 + y,
+                drawCircle(x, y,
                            winColor);
             }
         }
@@ -205,10 +201,10 @@ void Tictactoe::renderWinState(Cell player){
 
 void Tictactoe::drawCross(int x, int y, SDL_Color color){
     thickLineRGBA(renderer,
-                  x - cell_width * 0.3,
-                  y + cell_width * 0.3,
-                  x + cell_width * 0.3,
-                  y - cell_width * 0.3,
+                  (x * cell_width + cell_width * 0.5 + x) - cell_width * 0.3,
+                  (y * cell_width + cell_width * 0.5 + y) + cell_width * 0.3,
+                  (x * cell_width + cell_width * 0.5 + x) + cell_width * 0.3,
+                  (y * cell_width + cell_width * 0.5 + y) - cell_width * 0.3,
                   10,
                   color.r,
                   color.g,
@@ -216,10 +212,10 @@ void Tictactoe::drawCross(int x, int y, SDL_Color color){
                   255);
 
     thickLineRGBA(renderer,
-                  x - cell_width * 0.3,
-                  y - cell_width * 0.3,
-                  x + cell_width * 0.3,
-                  y + cell_width * 0.3,
+                  (x * cell_width + cell_width * 0.5 + x) - cell_width * 0.3,
+                  (y * cell_width + cell_width * 0.5 + y) - cell_width * 0.3,
+                  (x * cell_width + cell_width * 0.5 + x) + cell_width * 0.3,
+                  (y * cell_width + cell_width * 0.5 + y) + cell_width * 0.3,
                   10,
                   color.r,
                   color.g,
@@ -229,8 +225,8 @@ void Tictactoe::drawCross(int x, int y, SDL_Color color){
 
 void Tictactoe::drawCircle(int x, int y, SDL_Color color){
     filledCircleRGBA(renderer,
-                     x,
-                     y,
+                     x * cell_width + cell_width * 0.5 + x,
+                     y * cell_width + cell_width * 0.5 + y,
                      cell_width * 0.4,
                      color.r,
                      color.g,
@@ -238,8 +234,8 @@ void Tictactoe::drawCircle(int x, int y, SDL_Color color){
                      255);
 
     filledCircleRGBA(renderer,
-                     x,
-                     y,
+                     x * cell_width + cell_width * 0.5 + x,
+                     y * cell_width + cell_width * 0.5 + y,
                      cell_width * 0.35,
                      0,
                      0,
