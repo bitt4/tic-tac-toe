@@ -6,7 +6,7 @@ FLAGS=-std=c++11
 EXE=tictactoe
 
 tictactoe: main.cpp Tictactoe.cpp Tictactoe.hpp
-	$(CXX) $(LIBS) $(FLAGS) main.cpp Tictactoe.cpp -o $(EXE)
+	$(CXX) main.cpp Tictactoe.cpp $(LIBS) -o $(EXE) $(FLAGS)
 
 clean:
 	rm -f $(EXE)
