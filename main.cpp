@@ -31,7 +31,7 @@ int main(int argc, char *argv[]){
 
     SDL_Renderer *renderer = SDL_CreateRenderer(window,
                                                 -1,
-                                                SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+                                                SDL_RENDERER_SOFTWARE); // SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC
 
     if(renderer == NULL){
         SDL_DestroyWindow(window);
