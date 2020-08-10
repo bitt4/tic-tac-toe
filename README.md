@@ -5,7 +5,7 @@ Tic-Tac-Toe implemented in C++
  - SDL2 (with SDL2 gfx extension)
 
 ## Installation
-```console
+```
 git clone https://github.com/bitt4/tic-tac-toe.git
 cd tic-tac-toe
 make
