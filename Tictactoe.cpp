@@ -208,7 +208,7 @@ void Tictactoe::renderWinState(Cell player){
 
 void Tictactoe::drawCross(int x, int y, SDL_Color color){
     thickLineRGBA(renderer,
-                  (x + 0.2) * cell_width + x,    // simplified (x * cell_width + cell_width * 0.5 + x)
+                  (x + 0.2) * cell_width + x,    // simplified '(x * cell_width + cell_width * 0.5 + x) - cell_width * 0.3'
                   (y + 0.8) * cell_width + y,
                   (x + 0.8) * cell_width + x,
                   (y + 0.2) * cell_width + y,
