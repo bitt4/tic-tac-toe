@@ -22,6 +22,9 @@ int main(int argc, char *argv[]){
             if(strcmp(argv[i], "-s") == 0 || strcmp(argv[i], "--size") == 0){
                 if(i + 1 <= argc){
                     boardSize = atoi(argv[i+1]);
+
+                    // TODO: Check errors when parsing arguments
+
                 }
                 else{
                     displayHelp();
