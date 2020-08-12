@@ -32,7 +32,7 @@ private:
     void restart();
     void renderWinState(Cell);
 public:
-    Tictactoe(SDL_Renderer*, int, int);
+    Tictactoe(SDL_Renderer*, int, int, int);
     void renderInit();
     void click_on_cell(int, int);
     int getSize();

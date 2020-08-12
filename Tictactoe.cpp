@@ -1,7 +1,7 @@
 #include "Tictactoe.hpp"
 
-Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h)
-    :size(3),
+Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h, int s)
+    :size(s),
      crossColor({.r = 0, .g = 0, .b = 255}),
      circleColor({.r = 255, .g = 0, .b = 0}),
      drawColor({.r = 24, .g = 24, .b = 24}),

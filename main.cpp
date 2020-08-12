@@ -52,7 +52,7 @@ int main(int argc, char *argv[]){
         return EXIT_FAILURE;
     }
 
-    Tictactoe tictactoe(renderer, 600, 600);
+    Tictactoe tictactoe(renderer, 600, 600, 3);
 
     tictactoe.renderInit();
     SDL_RenderPresent(renderer);
