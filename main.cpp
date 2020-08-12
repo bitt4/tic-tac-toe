@@ -1,10 +1,23 @@
 #include <iostream>
 #include <cstdlib>
 #include <SDL2/SDL.h>
+#include <string.h>
 
 #include "Tictactoe.hpp"
 
+void displayHelp();
+
 int main(int argc, char *argv[]){
+
+    // Parse arguments
+
+    if(argc > 1){
+        for(int i = 0; i < argc; i++){
+            if(strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0){
+                displayHelp();
+            }
+        }
+    }
 
     // Initialize SDL
 
@@ -65,4 +78,8 @@ int main(int argc, char *argv[]){
     SDL_Quit();
 
     return 0;
+}
+
+void displayHelp(){
+    // Not implemented
 }
