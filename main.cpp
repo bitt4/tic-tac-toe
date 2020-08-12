@@ -9,12 +9,24 @@ void displayHelp();
 
 int main(int argc, char *argv[]){
 
+    int boardSize = 3;
+
     // Parse arguments
 
     if(argc > 1){
         for(int i = 0; i < argc; i++){
             if(strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0){
                 displayHelp();
+            }
+
+            if(strcmp(argv[i], "-s") == 0 || strcmp(argv[i], "--size") == 0){
+                if(i + 1 <= argc){
+                    boardSize = atoi(argv[i+1]);
+                }
+                else{
+                    displayHelp();
+                    return EXIT_FAILURE;
+                }
             }
         }
     }
@@ -31,7 +43,8 @@ int main(int argc, char *argv[]){
     SDL_Window *window = SDL_CreateWindow("Tic-Tac-Toe",
                                           SDL_WINDOWPOS_CENTERED,
                                           SDL_WINDOWPOS_CENTERED,
-                                          602, 602,
+                                          600 + boardSize - 1,
+                                          600 + boardSize - 1,
                                           SDL_WINDOW_SHOWN
                                          );
 
@@ -52,7 +65,7 @@ int main(int argc, char *argv[]){
         return EXIT_FAILURE;
     }
 
-    Tictactoe tictactoe(renderer, 600, 600, 3);
+    Tictactoe tictactoe(renderer, 600, 600, boardSize);
 
     tictactoe.renderInit();
     SDL_RenderPresent(renderer);
