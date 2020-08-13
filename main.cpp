@@ -23,11 +23,11 @@ int main(int argc, char *argv[]){
             if(strcmp(argv[i], "-s") == 0 || strcmp(argv[i], "--size") == 0){
                 if(i + 1 <= argc - 1){
                     boardSize = atoi(argv[i+1]);
-                    if(boardSize < 3 || boardSize > 10)
+                    if(boardSize < 3 || boardSize > 10){
                         boardSize = 3;
-                    else {
                         displayLengthError();
                     }
+
 
                     // TODO: Check errors when parsing arguments
 
@@ -108,5 +108,5 @@ void displayHelp(){
 }
 
 void displayLengthError(){
-    std::cout << "Size must be between 3 and 10.\n";
+    std::cout << "Invalid size, must be between 3 and 10, setting to 3...\n";
 }
