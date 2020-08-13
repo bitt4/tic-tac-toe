@@ -6,6 +6,7 @@
 #include "Tictactoe.hpp"
 
 void displayHelp();
+void displayLengthError();
 
 int main(int argc, char *argv[]){
 
@@ -24,6 +25,9 @@ int main(int argc, char *argv[]){
                     boardSize = atoi(argv[i+1]);
                     if(boardSize < 3 || boardSize > 10)
                         boardSize = 3;
+                    else {
+                        displayLengthError();
+                    }
 
                     // TODO: Check errors when parsing arguments
 
@@ -100,4 +104,9 @@ int main(int argc, char *argv[]){
 
 void displayHelp(){
     // Not implemented
+    std::cout << "Sample help\n";
+}
+
+void displayLengthError(){
+    std::cout << "Size must be between 3 and 10.\n";
 }
