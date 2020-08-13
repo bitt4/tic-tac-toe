@@ -22,7 +22,7 @@ int main(int argc, char *argv[]){
 
             if(strcmp(argv[i], "-s") == 0 || strcmp(argv[i], "--size") == 0){
                 if(i + 1 <= argc - 1){
-                    boardSize = atoi(argv[i+1]);
+                    boardSize = atoi(argv[i+1]);         // overflow
                     if(boardSize < 3 || boardSize > 10){
                         boardSize = 3;
                         displayLengthError();
