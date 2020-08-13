@@ -14,14 +14,16 @@ int main(int argc, char *argv[]){
     // Parse arguments
 
     if(argc > 1){
-        for(int i = 0; i < argc; i++){
+        for(int i = 1; i < argc; i++){
             if(strcmp(argv[i], "-h") == 0 || strcmp(argv[i], "--help") == 0){
                 displayHelp();
             }
 
             if(strcmp(argv[i], "-s") == 0 || strcmp(argv[i], "--size") == 0){
-                if(i + 1 <= argc){
+                if(i + 1 <= argc - 1){
                     boardSize = atoi(argv[i+1]);
+                    if(boardSize < 3 || boardSize > 10)
+                        boardSize = 3;
 
                     // TODO: Check errors when parsing arguments
 
