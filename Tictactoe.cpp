@@ -7,17 +7,13 @@ Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h, int s)
      drawColor({.r = 24, .g = 24, .b = 24}),
      currentPlayer(Cell::player_x),
      runningState(true),
-     gameEnded(false)
+     gameEnded(false),
+     renderer(renderer),
+     boardWidth(w),
+     boardHeight(h)
 {
-    this->renderer = renderer;
-    this->boardWidth = w;
-    this->boardHeight = h;
     this->cell_width = this->boardWidth / this->size;
     this->board = (Cell*) calloc( this->size * this->size, sizeof(Cell) );
-
-    // TODO: Resize window based on size of cell and
-    //       number of cells instead of changing size
-    //       of cell, ( main.cpp )
 }
 
 int Tictactoe::getSize(){
