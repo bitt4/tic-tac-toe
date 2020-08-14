@@ -9,8 +9,8 @@ Use `./tictactoe --help` to see options.
 
 Option          | Effect
 --------------- | -------------------------
-`--help` `-h`   | display help
-`--size` `-s`   | set the size of the board
+`--help`, `-h`   | display help
+`--size`, `-s`   | set the size of the board
 
 ## Installation
 ```
