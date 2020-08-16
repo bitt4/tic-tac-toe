@@ -104,7 +104,6 @@ int main(int argc, char *argv[]){
 }
 
 void displayHelp(){
-    // Not implemented
     std::cout << "Usage: ./tictactoe [OPTION]\n";
     std::cout << "Tic-Tac-Toe clone for 2 players.\n\n";
     std::cout << "  -h,          --help           display this message\n";
