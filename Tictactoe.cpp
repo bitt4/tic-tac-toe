@@ -38,6 +38,7 @@ void Tictactoe::renderInit(){
 
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 
+    // Draw lines between cells
     for(int i = 1; i < this->size; i++){
         SDL_RenderDrawLine(renderer,
                            this->cell_width * i + i,
@@ -75,9 +76,11 @@ void Tictactoe::switchPlayer(){
 
 void Tictactoe::restart(){
     renderInit();
-    for(int i = 0; i < this->size * this->size; i++){
-        this->board[i] = Cell::no_player;
+
+    for(int i = 0; i < this->size * this->size; i++){  // Reset board, status
+        this->board[i] = Cell::no_player;              // of every cell to empty
     }
+
     this->gameEnded = false;
     this->currentPlayer = Cell::player_x;
     SDL_RenderPresent(renderer);
