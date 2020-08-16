@@ -14,16 +14,50 @@ private:
     int boardWidth, boardHeight;
     int size;
     int cell_width;
+
+    /**
+     * Default colors of cross, circle and draw state
+     */
     SDL_Color crossColor, circleColor, drawColor;
+
+    /**
+     * Saves current player (player on move)
+     */
     Cell currentPlayer;
+
     Cell *board;
     bool runningState, gameEnded;
 
+    /**
+     * Draws cross at given cell coordinates
+     * filled by given color.
+     */
     void drawCross(int, int, SDL_Color);
+
+    /**
+     * Draws circle at given cell coordinates
+     * filled by given color.
+     */
     void drawCircle(int, int, SDL_Color);
+
+    /**
+     * Draws cross at given cell coordinates
+     * filled by color saved in 'SDL_Color crossColor'.
+     */
     void drawCross(int, int);
+
+    /**
+     * Draws circle at given cell coordinates
+     * filled by color saved in 'SDL_Color circleColor'.
+     */
     void drawCircle(int, int);
+
+    /**
+     * switches current player saved
+     * in 'Cell currentPlayer'
+     */
     void switchPlayer();
+
     bool checkRow(int, Cell);
     bool checkColumn(int, Cell);
     bool checkDiagonals(Cell);
