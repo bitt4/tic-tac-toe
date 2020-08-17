@@ -1,5 +1,5 @@
-# tic-tac-toe
-Tic-Tac-Toe implemented in C++
+# Tic-Tac-Toe
+Tic-Tac-Toe for 2 players implemented in C++
 
 ## Dependencies
  - SDL2 (with SDL2 gfx extension)
@@ -13,7 +13,7 @@ Option          | Effect
 `--size`, `-s`   | set the size of the board
 
 ## Installation
-```
+```bash
 git clone https://github.com/bitt4/tic-tac-toe.git
 cd tic-tac-toe
 make
