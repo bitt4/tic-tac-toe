@@ -58,12 +58,58 @@ private:
      */
     void switchPlayer();
 
+    /**
+     * checks line specified by 1st argument in            |X|X|X|
+     * array `Cell *board`,                                | | | |
+     * returns true, if it's filled by cells               | | | |
+     * specified by second argument,
+     * otherwise returns false
+     */
     bool checkRow(int, Cell);
+
+    /**
+     * checks column specified by 1st argument in          |X| | |
+     * array `Cell *board`,                                |X| | |
+     * returns true, if it's filled by cells               |X| | |
+     * specified by second argument,
+     * otherwise returns false
+     */
     bool checkColumn(int, Cell);
+
+    /**
+     * checks both diagonals of array `Cell *board`,       |X| | |
+     * returns true if any of them is filled by cells      | |X| |
+     * of type specified by argument,                      | | |X|
+     * otherwise returns false
+     */
     bool checkDiagonals(Cell);
+
+    /**
+     * first, it checks all rows and columns,
+     * then diagonals of array `Cell *board`,
+     * if any of them is filled by cells of same type
+     * as argument, returns true,
+     * otherwise returns false,
+     * uses functions checkColumn(), checkRow() and
+     * checkDiagonals()
+     */
     bool checkPlayerWon(Cell);
+
+    /**
+     * returns true if all cells are filled
+     * but neither player won,
+     * otherwise returns false
+     */
     bool checkDraw();
+
+    /**
+     * restarts game: renders empty board,
+     * resets all cells to Cell::no_player,
+     * sets gameEnded to false,
+     * sets currentPlayer to Cell::player_x
+     */
     void restart();
+
     void renderWinState(Cell);
 public:
     Tictactoe(SDL_Renderer*, int, int, int);
