@@ -25,7 +25,11 @@ private:
      */
     Cell currentPlayer;
 
+    /**
+     * pointer to array which saves owner of every cell
+     */
     Cell *board;
+
     bool runningState, gameEnded;
 
     /**
@@ -110,13 +114,47 @@ private:
      */
     void restart();
 
+    /**
+     * render board based on which player won,
+     * specified in 1st argument
+     */
     void renderWinState(Cell);
 public:
+    /**
+     * Tictactoe class constructor,
+     * allocates memory for board,
+     * initializes class members, sets colors, etc.
+     */
     Tictactoe(SDL_Renderer*, int, int, int);
+
+    /**
+     * render initial state of board
+     */
     void renderInit();
+
     void click_on_cell(int, int);
+
+    /**
+     * returns size of board
+     */
     int getSize();
+
+    /**
+     * returns width of cell in pixels
+     * (as if the name of function didn't already explained that)
+     */
     int get_cell_width();
+
+    /**
+     * again, simple getter, just returns
+     * running state of game
+     */
     bool getRunningState();
+
+    /**
+     * sets running state of game to false,
+     * causing it to break out of game loop
+     * in main.cpp
+     */
     void quit();
 };
