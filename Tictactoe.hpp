@@ -14,6 +14,7 @@ private:
     int boardWidth, boardHeight;
     int size;
     int cell_width;
+    int winCondition;
 
     /**
      * Default colors of cross, circle and draw state
