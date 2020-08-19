@@ -10,7 +10,8 @@ Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h, int s)
      gameEnded(false),
      renderer(renderer),
      boardWidth(w),
-     boardHeight(h)
+     boardHeight(h),
+     winCondition(3)
 {
     this->cell_width = this->boardWidth / this->size;
     this->board = (Cell*) calloc( this->size * this->size, sizeof(Cell) );
@@ -92,8 +93,13 @@ bool Tictactoe::checkRow(int row, Cell player){
         if(this->board[row * this->size + i] == player){
             rowCount++;
         }
+        else {
+            rowCount = 0;
+        }
+        if(rowCount == this->winCondition)
+            return true;
     }
-    return rowCount == this->size;
+    return false;
 }
 
 bool Tictactoe::checkColumn(int column, Cell player){
@@ -102,8 +108,13 @@ bool Tictactoe::checkColumn(int column, Cell player){
         if(this->board[i * this->size + column] == player){
             columnCount++;
         }
+        else {
+            columnCount = 0;
+        }
+        if(columnCount == this->winCondition)
+            return true;
     }
-    return columnCount == this->size;
+    return false;
 }
 
 bool Tictactoe::checkDiagonals(Cell player){
@@ -114,10 +125,12 @@ bool Tictactoe::checkDiagonals(Cell player){
         if(this->board[ i * this->size + i ] == player){
             diagonalCount++;
         }
+        else {
+            diagonalCount = 0;
+        }
+        if(diagonalCount == this->winCondition)
+            return true;
     }
-
-    if(diagonalCount == this->size)
-        return true;
 
     diagonalCount = 0;
 
@@ -126,9 +139,14 @@ bool Tictactoe::checkDiagonals(Cell player){
         if(this->board[ (this->size - i - 1) * this->size + i ] == player){
             diagonalCount++;
         }
+        else {
+            diagonalCount = 0;
+        }
+        if(diagonalCount == this->winCondition)
+            return true;
     }
 
-    return diagonalCount == this->size;
+    return false;
 }
 
 bool Tictactoe::checkPlayerWon(Cell player){
