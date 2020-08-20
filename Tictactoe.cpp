@@ -120,6 +120,24 @@ bool Tictactoe::checkColumn(int column, Cell player){
 bool Tictactoe::checkDiagonals(Cell player){
     int diagonalCount = 0;
 
+    for(int i = 0; i < this->size - this->winCondition + 1; i++){     // This block of code checks this area:
+        diagonalCount = 0;                                            // (described on 5x5 board)
+                                                                      //
+        for(int j = 0; j < this->size - i; j++){                      //  |X| | | | |
+            if(this->board[ (j+i) * this->size + j ] == player){      //  |X|X| | | |
+                diagonalCount++;                                      //  |X|X|X| | |
+            }                                                         //  |X|X|X|X| |
+            else {                                                    //  |X|X|X|X|X|
+                diagonalCount = 0;
+            }
+            if(diagonalCount == this->winCondition)
+                return true;
+        }
+    }
+
+    return false;
+
+    /*
     // First diagonal
     for(int i = 0; i < this->size; i++){
         if(this->board[ i * this->size + i ] == player){
@@ -147,6 +165,7 @@ bool Tictactoe::checkDiagonals(Cell player){
     }
 
     return false;
+    */
 }
 
 bool Tictactoe::checkPlayerWon(Cell player){
