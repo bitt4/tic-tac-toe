@@ -135,6 +135,21 @@ bool Tictactoe::checkDiagonals(Cell player){
         }
     }
 
+    for(int i = 0; i < this->size - this->winCondition; i++){         // This block of code checks this area:
+        diagonalCount = 0;                                            // (described on 5x5 board)
+                                                                      //
+        for(int j = 1; j < this->size - i; j++){                      //  | |X|X| | |
+            if(this->board[ (j-1) * this->size + j+i ] == player){    //  | | |X|X| |
+                diagonalCount++;                                      //  | | | |X|X|
+            }                                                         //  | | | | |X|
+            else {                                                    //  | | | | | |
+                diagonalCount = 0;
+            }
+            if(diagonalCount == this->winCondition)
+                return true;
+        }
+    }
+
     return false;
 
     /*
