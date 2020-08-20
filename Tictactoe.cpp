@@ -126,8 +126,8 @@ bool Tictactoe::checkDiagonals(Cell player){
         for(int j = 0; j < this->size - i; j++){                      //  |X| | | | |
             if(this->board[ (j+i) * this->size + j ] == player){      //  |X|X| | | |
                 diagonalCount++;                                      //  |X|X|X| | |
-            }                                                         //  |X|X|X|X| |
-            else {                                                    //  |X|X|X|X|X|
+            }                                                         //  | |X|X|X| |
+            else {                                                    //  | | |X|X|X|
                 diagonalCount = 0;
             }
             if(diagonalCount == this->winCondition)
