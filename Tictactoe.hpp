@@ -82,9 +82,10 @@ private:
     bool checkColumn(int, Cell);
 
     /**
-     * checks both diagonals of array `Cell *board`,       |X| | |
-     * returns true if any of them is filled by cells      | |X| |
-     * of type specified by argument,                      | | |X|
+     * checks every diagonal of array `Cell *board`,       |X| | |
+     * returns true if any of them contains                | |X| |
+     * `winCondition` (default 3) cells in a row           | | |X|
+     * of type specified by argument,
      * otherwise returns false
      */
     bool checkDiagonals(Cell);
