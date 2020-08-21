@@ -121,7 +121,7 @@ bool Tictactoe::checkDiagonals(Cell player){
     int diagonalCount = 0;
 
     for(int i = 0; i < this->size - this->winCondition + 1; i++){     // This block of code checks this area:
-        diagonalCount = 0;                                            // (described on 5x5 board)
+        diagonalCount = 0;                                            // (described on 5x5 board, winCondition = 3)
                                                                       //
         for(int j = 0; j < this->size - i; j++){                      //  |X| | | | |
             if(this->board[ (j+i) * this->size + j ] == player){      //  |X|X| | | |
@@ -136,13 +136,43 @@ bool Tictactoe::checkDiagonals(Cell player){
     }
 
     for(int i = 0; i < this->size - this->winCondition; i++){         // This block of code checks this area:
-        diagonalCount = 0;                                            // (described on 5x5 board)
+        diagonalCount = 0;                                            // (described on 5x5 board, winCondition = 3)
                                                                       //
         for(int j = 1; j < this->size - i; j++){                      //  | |X|X| | |
             if(this->board[ (j-1) * this->size + j+i ] == player){    //  | | |X|X| |
                 diagonalCount++;                                      //  | | | |X|X|
             }                                                         //  | | | | |X|
             else {                                                    //  | | | | | |
+                diagonalCount = 0;
+            }
+            if(diagonalCount == this->winCondition)
+                return true;
+        }
+    }
+
+    for(int i = 0; i < this->size - this->winCondition + 1; i++){
+        diagonalCount = 0;
+
+        for(int j = 0; j < this->size - i; j++){
+            if(this->board[ (this->size - j - 1) * this->size + j+i ] == player){
+                diagonalCount++;
+            }
+            else {
+                diagonalCount = 0;
+            }
+            if(diagonalCount == this->winCondition)
+                return true;
+        }
+    }
+
+    for(int i = 1; i < this->size - this->winCondition + 1; i++){
+        diagonalCount = 0;
+
+        for(int j = 0; j < this->size - i; j++){
+            if(this->board[ (this->size - i - j - 1) * this->size + j ] == player){
+                diagonalCount++;
+            }
+            else {
                 diagonalCount = 0;
             }
             if(diagonalCount == this->winCondition)
