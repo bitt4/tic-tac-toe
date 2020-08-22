@@ -1,6 +1,6 @@
 #include "Tictactoe.hpp"
 
-Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h, int s)
+Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h, int s, int win)
     :size(s),
      crossColor({.r = 0, .g = 0, .b = 255}),
      circleColor({.r = 255, .g = 0, .b = 0}),
@@ -11,7 +11,7 @@ Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h, int s)
      renderer(renderer),
      boardWidth(w),
      boardHeight(h),
-     winCondition(3)
+     winCondition(win)
 {
     this->cell_width = this->boardWidth / this->size;
     this->board = (Cell*) calloc( this->size * this->size, sizeof(Cell) );
