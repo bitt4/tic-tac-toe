@@ -128,6 +128,7 @@ void displayHelp(){
     std::cout << "Tic-Tac-Toe clone for 2 players.\n\n";
     std::cout << "  -h,          --help           display this message\n";
     std::cout << "  -s <number>, --size <number>  set size of board (how many cells are in one row)\n";
+    std::cout << "  -w <number>, --win  <number>  set win condition (how many filled cells does it take to win)\n";
 }
 
 void displayLengthError(){
