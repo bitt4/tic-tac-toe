@@ -11,6 +11,7 @@ void displayLengthError();
 int main(int argc, char *argv[]){
 
     int boardSize = 3;
+    int win = 3;
 
     // Parse arguments
 
@@ -38,7 +39,26 @@ int main(int argc, char *argv[]){
                     return EXIT_FAILURE;
                 }
             }
+
+            if(strcmp(argv[i], "-w") == 0 || strcmp(argv[i], "--win") == 0){
+                if(i + 1 <= argc - 1){
+                    win = atoi(argv[i+1]);         // overflow
+                    if(win < 3){
+                        win = 3;
+                        std::cerr << "Win condition is too small, must be at least 3, setting to 3...\n";
+                    }
+                }
+                else{
+                    displayHelp();
+                    return EXIT_FAILURE;
+                }
+            }
         }
+    }
+
+    if(win > boardSize){
+        std::cerr << "Win condition cannot be bigger than board size.\n";
+        return EXIT_FAILURE;
     }
 
     // Initialize SDL
@@ -75,7 +95,7 @@ int main(int argc, char *argv[]){
         return EXIT_FAILURE;
     }
 
-    Tictactoe tictactoe(renderer, 600, 600, boardSize);
+    Tictactoe tictactoe(renderer, 600, 600, boardSize, win);
 
     tictactoe.renderInit();
     SDL_RenderPresent(renderer);
