@@ -127,7 +127,7 @@ public:
      * allocates memory for board,
      * initializes class members, sets colors, etc.
      */
-    Tictactoe(SDL_Renderer*, int, int, int);
+    Tictactoe(SDL_Renderer*, int, int, int, int);
 
     /**
      * render initial state of board
