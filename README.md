@@ -11,6 +11,7 @@ Option          | Effect
 --------------- | -------------------------
 `--help`, `-h`   | display help
 `--size`, `-s`   | set the size of the board
+`--win`, `-w`    | set win condition
 
 ## Installation
 ```bash
