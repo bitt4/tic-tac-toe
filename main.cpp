@@ -24,12 +24,17 @@ int main(int argc, char *argv[]){
 
             if(strcmp(argv[i], "-s") == 0 || strcmp(argv[i], "--size") == 0){
                 if(i + 1 <= argc - 1){
-                    boardSize = atoi(argv[i+1]);         // overflow
-                    if(boardSize < 3 || boardSize > 10){
-                        boardSize = 3;
+                    if(strlen(argv[i+1]) > 2){ /* Prevent overflow */
                         displayLengthError();
+                        boardSize = 3;
                     }
-
+                    else {
+                        boardSize = atoi(argv[i+1]);
+                        if(boardSize < 3 || boardSize > 10){
+                            boardSize = 3;
+                            displayLengthError();
+                        }
+                    }
 
                     // TODO: Check errors when parsing arguments
 
@@ -42,10 +47,16 @@ int main(int argc, char *argv[]){
 
             if(strcmp(argv[i], "-w") == 0 || strcmp(argv[i], "--win") == 0){
                 if(i + 1 <= argc - 1){
-                    win = atoi(argv[i+1]);         // overflow
-                    if(win < 3){
+                    if(strlen(argv[i+1]) > 2){ /* Prevent overflow */
+                        std::cerr << "Invalid win condition, setting to 3...\n";
                         win = 3;
-                        std::cerr << "Win condition is too small, must be at least 3, setting to 3...\n";
+                    }
+                    else {
+                        win = atoi(argv[i+1]);
+                        if(win < 3){
+                            win = 3;
+                            std::cerr << "Win condition is too small, must be at least 3, setting to 3...\n";
+                        }
                     }
                 }
                 else{
