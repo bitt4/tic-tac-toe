@@ -21,7 +21,7 @@ int Tictactoe::getSize(){
     return this->size;
 }
 
-int Tictactoe::get_cell_width(){
+int Tictactoe::getCellWidth(){
     return this->cell_width;
 }
 
@@ -201,7 +201,7 @@ bool Tictactoe::checkDraw(){
     return emptyCells == 0;
 }
 
-void Tictactoe::click_on_cell(int x, int y){
+void Tictactoe::clickOnCell(int x, int y){
 
     if(gameEnded){
         restart();

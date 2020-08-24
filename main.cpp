@@ -35,9 +35,6 @@ int main(int argc, char *argv[]){
                             displayLengthError();
                         }
                     }
-
-                    // TODO: Check errors when parsing arguments
-
                 }
                 else{
                     displayHelp();
@@ -121,7 +118,7 @@ int main(int argc, char *argv[]){
                 break;
             case SDL_MOUSEBUTTONDOWN:
                 if(e.button.button == SDL_BUTTON_LEFT)
-                    tictactoe.click_on_cell(e.button.x / tictactoe.get_cell_width(), e.button.y / tictactoe.get_cell_width());
+                    tictactoe.clickOnCell(e.button.x / tictactoe.getCellWidth(), e.button.y / tictactoe.getCellWidth());
                 break;
             default: {}
             }

@@ -134,7 +134,7 @@ public:
      */
     void renderInit();
 
-    void click_on_cell(int, int);
+    void clickOnCell(int, int);
 
     /**
      * returns size of board
@@ -145,7 +145,7 @@ public:
      * returns width of cell in pixels
      * (as if the name of function didn't already explained that)
      */
-    int get_cell_width();
+    int getCellWidth();
 
     /**
      * again, simple getter, just returns
