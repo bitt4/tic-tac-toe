@@ -181,36 +181,6 @@ bool Tictactoe::checkDiagonals(Cell player){
     }
 
     return false;
-
-    /*
-    // First diagonal
-    for(int i = 0; i < this->size; i++){
-        if(this->board[ i * this->size + i ] == player){
-            diagonalCount++;
-        }
-        else {
-            diagonalCount = 0;
-        }
-        if(diagonalCount == this->winCondition)
-            return true;
-    }
-
-    diagonalCount = 0;
-
-    // Second diagonal
-    for(int i = 0; i < this->size; i++){
-        if(this->board[ (this->size - i - 1) * this->size + i ] == player){
-            diagonalCount++;
-        }
-        else {
-            diagonalCount = 0;
-        }
-        if(diagonalCount == this->winCondition)
-            return true;
-    }
-
-    return false;
-    */
 }
 
 bool Tictactoe::checkPlayerWon(Cell player){
