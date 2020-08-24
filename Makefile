@@ -1,7 +1,7 @@
 CXX ?= g++
 
 LIBS =-lSDL2 -lSDL2_gfx -lSDL2main
-FLAGS=-std=c++11
+FLAGS=-std=c++11 -O3
 
 EXE=tictactoe
 
