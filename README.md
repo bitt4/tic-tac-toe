@@ -2,7 +2,7 @@
 Tic-Tac-Toe for 2 players implemented in C++
 
 ## Dependencies
- - SDL2 (with SDL2 gfx extension)
+ - [SDL2](https://www.libsdl.org/download-2.0.php) (with [SDL2 gfx](https://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/) extension)
 
 ## Options
 Use `./tictactoe --help` to see options.
