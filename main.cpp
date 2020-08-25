@@ -91,6 +91,11 @@ int main(int argc, char *argv[]){
         return EXIT_FAILURE;
     }
 
+    /* Set icon */
+    SDL_Surface *icon = SDL_LoadBMP("icon.bmp");
+    SDL_SetWindowIcon(window, icon);
+    SDL_FreeSurface(icon);
+
     // Create renderer
 
     SDL_Renderer *renderer = SDL_CreateRenderer(window,
