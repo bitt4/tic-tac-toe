@@ -37,25 +37,25 @@ private:
      * Draws cross at given cell coordinates
      * filled by given color.
      */
-    void drawCross(int, int, SDL_Color);
+    void drawCross(int x, int y, SDL_Color color);
 
     /**
      * Draws circle at given cell coordinates
      * filled by given color.
      */
-    void drawCircle(int, int, SDL_Color);
+    void drawCircle(int x, int y, SDL_Color color);
 
     /**
      * Draws cross at given cell coordinates
      * filled by color saved in 'SDL_Color crossColor'.
      */
-    void drawCross(int, int);
+    void drawCross(int x, int y);
 
     /**
      * Draws circle at given cell coordinates
      * filled by color saved in 'SDL_Color circleColor'.
      */
-    void drawCircle(int, int);
+    void drawCircle(int x, int y);
 
     /**
      * switches current player saved
@@ -66,20 +66,22 @@ private:
     /**
      * checks line specified by 1st argument in            |X|X|X|
      * array `Cell *board`,                                | | | |
-     * returns true, if it's filled by cells               | | | |
-     * specified by second argument,
+     * returns true, if there are `winCondition`           | | | |
+     * (default 3) cells next to each other of Cell type
+     * specified in second argument,
      * otherwise returns false
      */
-    bool checkRow(int, Cell);
+    bool checkRow(int y, Cell player);
 
     /**
      * checks column specified by 1st argument in          |X| | |
      * array `Cell *board`,                                |X| | |
-     * returns true, if it's filled by cells               |X| | |
-     * specified by second argument,
+     * returns true, if there are `winCondition`           |X| | |
+     * (default 3) cells next to each other of Cell type
+     * specified in second argument,
      * otherwise returns false
      */
-    bool checkColumn(int, Cell);
+    bool checkColumn(int x, Cell player);
 
     /**
      * checks every diagonal of array `Cell *board`,       |X| | |
@@ -88,7 +90,7 @@ private:
      * of type specified by argument,
      * otherwise returns false
      */
-    bool checkDiagonals(Cell);
+    bool checkDiagonals(Cell player);
 
     /**
      * first, it checks all rows and columns,
@@ -99,7 +101,7 @@ private:
      * uses functions checkColumn(), checkRow() and
      * checkDiagonals()
      */
-    bool checkPlayerWon(Cell);
+    bool checkPlayerWon(Cell player);
 
     /**
      * returns true if all cells are filled
@@ -120,21 +122,21 @@ private:
      * render board based on which player won,
      * specified in 1st argument
      */
-    void renderWinState(Cell);
+    void renderWinState(Cell player);
 public:
     /**
      * Tictactoe class constructor,
      * allocates memory for board,
      * initializes class members, sets colors, etc.
      */
-    Tictactoe(SDL_Renderer*, int, int, int, int);
+    Tictactoe(SDL_Renderer* renderer, int width, int height, int size, int winCondition);
 
     /**
      * render initial state of board
      */
     void renderInit();
 
-    void clickOnCell(int, int);
+    void clickOnCell(int x, int y);
 
     /**
      * returns size of board
