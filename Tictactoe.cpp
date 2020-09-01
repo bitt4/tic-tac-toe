@@ -17,6 +17,10 @@ Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h, int s, int win)
     this->board = (Cell*) calloc( this->size * this->size, sizeof(Cell) );
 }
 
+Tictactoe::~Tictactoe(){
+    free(this->board);
+}
+
 int Tictactoe::getSize(){
     return this->size;
 }
