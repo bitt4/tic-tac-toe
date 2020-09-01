@@ -131,6 +131,8 @@ public:
      */
     Tictactoe(SDL_Renderer* renderer, int width, int height, int size, int winCondition);
 
+    ~Tictactoe();
+
     /**
      * render initial state of board
      */
