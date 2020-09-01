@@ -1,17 +1,17 @@
 #include "Tictactoe.hpp"
 
 Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h, int s, int win)
-    :size(s),
+    :renderer(renderer),
+     boardWidth(w),
+     boardHeight(h),
+     size(s),
+     winCondition(win),
      crossColor({.r = 0, .g = 0, .b = 255}),
      circleColor({.r = 255, .g = 0, .b = 0}),
      drawColor({.r = 24, .g = 24, .b = 24}),
      currentPlayer(Cell::player_x),
      runningState(true),
-     gameEnded(false),
-     renderer(renderer),
-     boardWidth(w),
-     boardHeight(h),
-     winCondition(win)
+     gameEnded(false)
 {
     this->cell_width = this->boardWidth / this->size;
     this->board = (Cell*) calloc( this->size * this->size, sizeof(Cell) );
