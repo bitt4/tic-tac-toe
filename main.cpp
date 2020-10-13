@@ -116,7 +116,7 @@ int main(int argc, char *argv[]){
     SDL_Event e;
 
     while(tictactoe.getRunningState()){
-        while(SDL_PollEvent(&e)){
+        if(SDL_WaitEvent(&e)){
             switch(e.type){
             case SDL_QUIT:
                 tictactoe.quit();
