@@ -6,15 +6,24 @@ Tictactoe::Tictactoe(SDL_Renderer *renderer, int w, int h, int s, int win)
      boardHeight(h),
      size(s),
      winCondition(win),
-     crossColor({.r = 0, .g = 0, .b = 255}),
-     circleColor({.r = 255, .g = 0, .b = 0}),
-     drawColor({.r = 24, .g = 24, .b = 24}),
      currentPlayer(Cell::player_x),
      runningState(true),
      gameEnded(false)
 {
     this->cell_width = this->boardWidth / this->size;
     this->board = (Cell*) calloc( this->size * this->size, sizeof(Cell) );
+
+    this->crossColor.r = 0;
+    this->crossColor.g = 0;
+    this->crossColor.b = 255;
+
+    this->circleColor.r = 255;
+    this->circleColor.g = 0;
+    this->circleColor.b = 0;
+
+    this->drawColor.r = 24;
+    this->drawColor.g = 24;
+    this->drawColor.b = 24;
 }
 
 Tictactoe::~Tictactoe(){
