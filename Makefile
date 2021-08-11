@@ -10,8 +10,8 @@ FLAGS+=-std=c++11 -O3 -Wall -pedantic
 
 EXE=tictactoe
 
-tictactoe: main.cpp Tictactoe.cpp Tictactoe.hpp
-	$(CXX) main.cpp Tictactoe.cpp $(LIBS) -o $(EXE) $(FLAGS)
+tictactoe: src/main.cpp src/Tictactoe.cpp include/Tictactoe.hpp
+	$(CXX) src/main.cpp src/Tictactoe.cpp $(LIBS) -o $(EXE) $(FLAGS)
 
 clean:
 ifeq ($(OS),Windows_NT)
